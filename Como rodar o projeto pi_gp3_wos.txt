@@ -1,0 +1,23 @@
+## Realizar o cone ou baixar o zip do projeto
+## link: https://github.com/PICompParaisopolis2021/pi_gp3_wos
+
+git clone https://github.com/PICompParaisopolis2021/pi_gp3_wos.git
+
+## no diretorio pi_gp3_wos executar:
+
+python -m venv .venv
+
+source .venv/bin/activate
+
+pip install --upgrade pip
+
+pip install -r requirements.txt
+
+python manage.py runserver
+
+python manage.py migrate
+
+
+## Usuario
+admin
+pigp3
