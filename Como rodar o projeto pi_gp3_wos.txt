@@ -5,9 +5,9 @@ git clone https://github.com/PICompParaisopolis2021/pi_gp3_wos.git
 
 ## no diretorio pi_gp3_wos executar:
 
-python -m venv .venv
+python -m venv venv
 
-source .venv/bin/activate
+source venv/Scripts/activate
 
 pip install --upgrade pip
 
