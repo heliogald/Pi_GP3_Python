@@ -11,3 +11,4 @@ class Pesquisa(models.Model):
     year = models.IntegerField()
     match = models.CharField(max_length=300)
     type_organization = models.CharField(max_length=50)
+    #filtrar_pais = models.CharField(max_length=50)

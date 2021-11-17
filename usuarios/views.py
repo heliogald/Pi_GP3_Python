@@ -25,7 +25,7 @@ def cadastrarUsuario(request):
         context = {
             'form': form,
         }
-        return render(request, "cadastrarUsuario.html", context)
+        return render(request, "cadastrarUsuario.html",  context)
 
 def user_logout(request):
     logout(request)

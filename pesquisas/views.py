@@ -54,3 +54,13 @@ def consultarPesquisa(request):
         'pesquisas': pesquisas
     }
     return render(request, 'consultarPesquisa.html', context)
+
+def filtrar_Pais(request):
+    pesquisas = Pesquisa.objects.all()
+    context = {
+        'pesquisas': pesquisas
+    }
+    return render(request, 'filtrarPais.html', context)
+
+
+
