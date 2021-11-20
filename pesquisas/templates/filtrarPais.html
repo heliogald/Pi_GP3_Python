@@ -1,14 +1,29 @@
-{% extends 'base.html' %}
+{% extends 'consultarPesquisa.html' %}
 {% load i18n %}
-
 {% block head %}
-    <title>Cadastro de Usuário</title>
+    <title>Filtrar País</title>
 {% endblock %}
 
 {% block content %}
+<div class="col-6 m-auto">
+        <form action="">
+            {% csrf_token %}
+            <select class="form-control mt-5" name="country" id="country" required>
+                <!--<option value="">Selecione o País</option>-->
+                {% for pesquisa in pesquisas  %}
+                    <option value="{{countries}}">{{countries}}</option>
+                {% endfor %}
+            </select>
+        </form>
+    </div>
+   <!-- <div class="result col-10 m-auto">
+        {% autoescape off %}
+         {{dados}}
+        {% endautoescape %}
+    </div> -->
 {% endblock %}
 
-{% block body %}
+<!-- {% block body %}
 <div class="col-10 m-auto pt-2 pb-2" text-center>
     <h1>Filtrar por País</h1>
   </div>
@@ -20,10 +35,10 @@
           <th scope="col">Country</th>
         </tr>
       </thead>
-    <form method="post">
+    <form action="">
         {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit" class="btn btn-primary">Filtrar</button>
+      <select class="form-control mt-5" name="country" id="country" required>
+         <option value="">Selecione o País</option>
   </form><br><br>
       <tbody>
         {% for pesquisa in pesquisas %}
@@ -35,4 +50,4 @@
     </table>
   </div>
 
-{% endblock %}
+{% endblock %} -->
