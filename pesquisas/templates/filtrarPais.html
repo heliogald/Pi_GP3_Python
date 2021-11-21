@@ -5,17 +5,20 @@
 {% endblock %}
 
 {% block content %}
-<div class="col-6 m-auto">
+<div class="row mt-10 justify-content-around">
         <form action="">
             {% csrf_token %}
-            <select class="form-control mt-5" name="country" id="country" required>
-                <!--<option value="">Selecione o País</option>-->
-                {% for pesquisa in pesquisas  %}
-                    <option value="{{countries}}">{{countries}}</option>
+            <select class="col-20 form-control"  name="country" id="country" required>
+                <option value="{{pesquisa}}">Selecione o País</option>
+                {% for pesquisa in pesquisas %}
+                    <option value="{{pesquisa}}">{{pesquisa.country}}</option>
                 {% endfor %}
             </select>
+          <input class="col-20 form-control" name="Match" id="Match" type="text">
+          <button class="col-6 btn btn-primary">Pesquisar</button>
         </form>
     </div>
+
    <!-- <div class="result col-10 m-auto">
         {% autoescape off %}
          {{dados}}

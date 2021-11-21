@@ -55,12 +55,38 @@ def consultarPesquisa(request):
     }
     return render(request, 'consultarPesquisa.html', context)
 
+
 def filtrar_Pais(request):
-    pesquisas = Pesquisa.objects.all()
+    if request.method == 'POST' and request.FILES['pesquisas']:
+        pesquisas = request.FILES['pesquisas']
+        # Lendo arquivo InMemoryUploadedFile
+        file = pesquisas.read().decode('utf-8')
+        #reader = csv.DictReader(io.StringIO(file))
+        reader = pesquisas(io.StringIO(file))
+        # Gerando uma list comprehension
+        data = [line for line in reader]
+        save_data(data)
+        return HttpResponseRedirect(reverse('consultarPesquisa'))
+
+    template_name = 'consultarPesquisa.html'
+    return render(request, template_name)
+
+
+"""    pesquisas = Pesquisa.objects.all()
     context = {
         'pesquisas': pesquisas
     }
     return render(request, 'filtrarPais.html', context)
 
 
+        if request.body:
+            field = json.loads(request.body.decode('utf-8'))
+            search = field['country']
+            title = field['Match']
+            df2 = df.dropna()
+            data['pesquisas'] = df2[
+                (df2['country'].str.contains(search)) & (df2['Match'].str.contains(title, flags=re.IGNORECASE))] \
+                .to_html(index=False, classes=['table', 'table-striped', 'mt-5'])
+            return JsonResponse({'pesquisa': data['pesquisa']})
+"""
 

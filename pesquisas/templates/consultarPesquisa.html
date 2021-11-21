@@ -10,12 +10,12 @@
         <form action="">
             {% csrf_token %}
             <select class="col-20 form-control"  name="country" id="country" required>
-                <option value="">Selecione o País</option>
-                {% for pesquisa in pesquisas  %}
-                    <option value="{{countries}}">{{countries}}</option>
+                <option value="{{pesquisa}}">Selecione o País</option>
+                {% for pesquisa in pesquisas %}
+                    <option value="{{pesquisa}}">{{pesquisa.country}}</option>
                 {% endfor %}
             </select>
-          <input class="col-20 form-control" name="title" id="title" type="text">
+          <input class="col-20 form-control" name="Match" id="Match" type="text">
           <button class="col-6 btn btn-primary">Pesquisar</button>
         </form>
     </div>
