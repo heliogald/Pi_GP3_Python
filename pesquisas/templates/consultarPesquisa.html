@@ -7,16 +7,16 @@
 
 {% block content %}
 <div class="row mt-10 justify-content-around">
-        <form action="">
+        <form action="/pesquisas/filtrarPais/" method="GET" >
             {% csrf_token %}
             <select class="col-20 form-control"  name="country" id="country" required>
                 <option value="{{pesquisa}}">Selecione o País</option>
                 {% for pesquisa in pesquisas %}
-                    <option value="{{pesquisa}}">{{pesquisa.country}}</option>
+                   <option value="{{pesquisa}}">{{pesquisa.country}}</option>
                 {% endfor %}
             </select>
-          <input class="col-20 form-control" name="Match" id="Match" type="text">
-          <button class="col-6 btn btn-primary">Pesquisar</button>
+          <!--<input class="col-20 form-control" name="Match" id="Match" type="text">-->
+          <button class="col-6 btn btn-primary" >Pesquisar</button>
         </form>
     </div>
 {% endblock %}

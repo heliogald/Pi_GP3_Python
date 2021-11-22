@@ -3,7 +3,7 @@
 
     doc.querySelector('.btn').addEventListener('click',async(event)=>{
         event.preventDefault();
-        let req=await fetch('http://localhost:8000/pesquisas/consultarPesquisa/',{
+        let req=await fetch('http://localhost:8000/pesquisas/filtrarPais/',{
             method:'POST',
             headers:{
                 'Accept':'application/json',
@@ -12,7 +12,7 @@
             },
             body:JSON.stringify({
                 'country':doc.querySelector('#country').value,
-                'title':doc.querySelector('#title').value,
+                'Match':doc.querySelector('#Match').value,
             })
         });
         let res=await req.json();

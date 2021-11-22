@@ -1,7 +1,10 @@
 import csv
 import io
+import pandas as pd
+import sqlalchemy
+import sqlite3
 from django.urls import reverse
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 
 from django.shortcuts import render
 from pesquisas.models import Pesquisa
@@ -56,21 +59,15 @@ def consultarPesquisa(request):
     return render(request, 'consultarPesquisa.html', context)
 
 
+#Conexão com banco de dados
+connection = sqlite3.connect('db.sqlite3')
+c = connection.cursor()
+#SQL
+sql = 'SELECT * FROM pesquisas_pesquisa WHERE country = ?'
+
 def filtrar_Pais(request):
-    if request.method == 'POST' and request.FILES['pesquisas']:
-        pesquisas = request.FILES['pesquisas']
-        # Lendo arquivo InMemoryUploadedFile
-        file = pesquisas.read().decode('utf-8')
-        #reader = csv.DictReader(io.StringIO(file))
-        reader = pesquisas(io.StringIO(file))
-        # Gerando uma list comprehension
-        data = [line for line in reader]
-        save_data(data)
-        return HttpResponseRedirect(reverse('consultarPesquisa'))
-
-    template_name = 'consultarPesquisa.html'
-    return render(request, template_name)
-
+    c.execute(sql, ('country'))
+    render(request, 'filtrarPais.html')
 
 """    pesquisas = Pesquisa.objects.all()
     context = {

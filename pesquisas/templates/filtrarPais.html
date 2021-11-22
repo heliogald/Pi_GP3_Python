@@ -1,56 +1,53 @@
-{% extends 'consultarPesquisa.html' %}
+{% extends 'base.html' %}
 {% load i18n %}
 {% block head %}
     <title>Filtrar País</title>
 {% endblock %}
 
 {% block content %}
-<div class="row mt-10 justify-content-around">
-        <form action="">
-            {% csrf_token %}
-            <select class="col-20 form-control"  name="country" id="country" required>
-                <option value="{{pesquisa}}">Selecione o País</option>
-                {% for pesquisa in pesquisas %}
-                    <option value="{{pesquisa}}">{{pesquisa.country}}</option>
-                {% endfor %}
-            </select>
-          <input class="col-20 form-control" name="Match" id="Match" type="text">
-          <button class="col-6 btn btn-primary">Pesquisar</button>
-        </form>
-    </div>
-
-   <!-- <div class="result col-10 m-auto">
+   <div class="result col-10 m-auto">
         {% autoescape off %}
-         {{dados}}
+         {{pesquisa}}
         {% endautoescape %}
     </div> -->
 {% endblock %}
 
-<!-- {% block body %}
+{% block body %}
 <div class="col-10 m-auto pt-2 pb-2" text-center>
-    <h1>Filtrar por País</h1>
+    <h1>Consultar País</h1>
   </div>
 
-  <div class="col-5 m-auto pt-2 pb-2" text-center>
+  <div class="col-10 m-auto pt-2 pb-2" text-center>
     <table class="table">
       <thead class="thead-dark">
         <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Address</th>
           <th scope="col">Country</th>
+          <th scope="col">Publication Title</th>
+          <th scope="col">Publication Number</th>
+          <th scope="col">Year</th>
+          <th scope="col">Match</th>
+          <th scope="col">Type organization</th>
+
         </tr>
       </thead>
-    <form action="">
-        {% csrf_token %}
-      <select class="form-control mt-5" name="country" id="country" required>
-         <option value="">Selecione o País</option>
-  </form><br><br>
       <tbody>
-        {% for pesquisa in pesquisas %}
+        {% for pesquisa in pesquisa.country %}
           <tr>
+            <td>{{ pesquisa.name }}</td>
+            <td>{{ pesquisa.address }}</td>
             <td>{{ pesquisa.country }}</td>
+            <td>{{ pesquisa.publication_title }}</td>
+            <td>{{ pesquisa.publication_Number }}</td>
+            <td>{{ pesquisa.year }}</td>
+            <td>{{ pesquisa.match }}</td>
+            <td>{{ pesquisa.type_organization }}</td>
+
           </tr>
         {% endfor %}
       </tbody>
     </table>
   </div>
+{% endblock %}
 
-{% endblock %} -->
