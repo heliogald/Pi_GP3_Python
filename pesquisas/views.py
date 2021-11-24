@@ -59,15 +59,17 @@ def consultarPesquisa(request):
     return render(request, 'consultarPesquisa.html', context)
 
 
-#Conexão com banco de dados
-connection = sqlite3.connect('db.sqlite3')
-c = connection.cursor()
-#SQL
-sql = 'SELECT * FROM pesquisas_pesquisa WHERE country = ?'
-
 def filtrar_Pais(request):
-    c.execute(sql, ('country'))
-    render(request, 'filtrarPais.html')
+    pesquisas = Pesquisa.objects.all()
+    context = {
+        'pesquisas': pesquisas
+    }
+    return render(request, 'filtrarPais.html', context)
+
+
+
+
+
 
 """    pesquisas = Pesquisa.objects.all()
     context = {

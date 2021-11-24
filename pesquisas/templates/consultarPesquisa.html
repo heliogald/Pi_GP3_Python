@@ -7,7 +7,7 @@
 
 {% block content %}
 <div class="row mt-10 justify-content-around">
-        <form action="/pesquisas/filtrarPais/" method="GET" >
+        <form action="/pi_gp3_wos/read_data.py/" method="GET" >
             {% csrf_token %}
             <select class="col-20 form-control"  name="country" id="country" required>
                 <option value="{{pesquisa}}">Selecione o País</option>

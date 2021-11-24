@@ -9,7 +9,7 @@
         {% autoescape off %}
          {{pesquisa}}
         {% endautoescape %}
-    </div> -->
+    </div>
 {% endblock %}
 
 {% block body %}
@@ -33,9 +33,9 @@
         </tr>
       </thead>
       <tbody>
-        {% for pesquisa in pesquisa.country %}
+        {% for pesquisa in pesquisas %}
           <tr>
-            <td>{{ pesquisa.name }}</td>
+            <td>{{ read_data.py.name }}</td>
             <td>{{ pesquisa.address }}</td>
             <td>{{ pesquisa.country }}</td>
             <td>{{ pesquisa.publication_title }}</td>
